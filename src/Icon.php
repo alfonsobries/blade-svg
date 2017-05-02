@@ -2,9 +2,8 @@
 
 namespace BladeSvg;
 
-use Illuminate\Support\Collection;
-use Illuminate\Support\HtmlString;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\HtmlString;
 
 class Icon implements Htmlable
 {
@@ -36,18 +35,21 @@ class Icon implements Htmlable
         } else {
             $this->attrs[snake_case($method, '-')] = $args[0];
         }
+
         return $this;
     }
 
     public function inline()
     {
         $this->renderMode = 'inline';
+
         return $this;
     }
 
     public function sprite()
     {
         $this->renderMode = 'sprite';
+
         return $this;
     }
 
@@ -65,7 +67,7 @@ class Icon implements Htmlable
         return vsprintf('<svg%s><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="%s#%s"></use></svg>', [
             $this->renderAttributes(),
             $this->factory->spritesheetUrl(),
-            $this->factory->spriteId($this->icon)
+            $this->factory->spriteId($this->icon),
         ]);
     }
 
@@ -79,6 +81,7 @@ class Icon implements Htmlable
             if (is_int($attr)) {
                 return $value;
             }
+
             return sprintf('%s="%s"', $attr, $value);
         })->implode(' ');
     }

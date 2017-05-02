@@ -3,18 +3,18 @@
 namespace BladeSvg;
 
 use Exception;
-use Illuminate\Support\Collection;
-use Illuminate\Support\HtmlString;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\HtmlString;
 
 class IconFactory
 {
     private $files;
     private $svgCache;
     private $config = [
-        'inline' => false,
-        'class' => 'icon',
+        'inline'        => false,
+        'class'         => 'icon',
         'sprite_prefix' => '',
     ];
 
@@ -22,7 +22,7 @@ class IconFactory
     {
         $this->config = Collection::make(array_merge($this->config, $config));
         $this->svgCache = Collection::make();
-        $this->files = $filesystem ?: new Filesystem;
+        $this->files = $filesystem ?: new Filesystem();
     }
 
     public function registerBladeTag()
