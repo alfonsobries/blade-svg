@@ -1,7 +1,6 @@
 <?php
 
 use BladeSvg\IconFactory;
-use Illuminate\Support\HtmlString;
 use Illuminate\Filesystem\Filesystem;
 
 class IconFactoryTest extends PHPUnit_Framework_TestCase
